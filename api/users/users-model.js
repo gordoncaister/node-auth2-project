@@ -1,4 +1,4 @@
-const db = require("../../database/dbConfig.js");
+const db = require("../../database/dbConfig");
 
 module.exports = {
     add,
@@ -16,9 +16,11 @@ function findBy(key){
 }
 
 async function add(user) {
+    console.log("got here")
   try {
+      console.log("also got here")
     const [id] = await db("users").insert(user, "id");
-
+    console.log(id)
     return findById(id);
   } catch (error) {
     throw error;
